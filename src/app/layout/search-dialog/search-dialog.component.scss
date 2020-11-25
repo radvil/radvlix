@@ -1,0 +1,29 @@
+mat-form-field {
+  width: 100%;
+}
+
+ul.search-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  li {
+    flex-basis: 45%;
+    height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #222222;
+  }
+}
+
+@media (min-width: 777px) {
+  input#search-input {
+    font-weight: bolder;
+    font-size: 1.5rem;
+  }
+}

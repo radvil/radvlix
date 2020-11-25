@@ -1,0 +1,25 @@
+#settings {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+
+	@media (max-width: 777px) {
+		justify-content: unset;
+
+		.card {
+			width: 100%;
+		}
+	}
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+.col-md-4,
+.col-md-8 {
+	display: flex;
+	align-items: center;
+	height: 66px;
+}

@@ -1,0 +1,116 @@
+ul.ghost-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  li {
+    flex-basis: 45%;
+    height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    // background-color: #222222;
+
+    display: flex;
+    flex-direction: row;
+
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 40%;
+      border-radius: 1rem;
+      margin-right: 1rem;
+      background: linear-gradient(
+        90deg,
+        #33333366 0%,
+        #41414166 25%,
+        #53535366 50%,
+        #41414166 75%,
+        #33333366 100%
+      );
+      animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite;
+
+      img {
+        width: inherit;
+        animation: sosOpacityImage 1.5s infinite;
+      }
+    }
+
+    .meta {
+      width: 50%;
+      .title {
+        height: 2rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+        background: linear-gradient(
+          90deg,
+          #33333366 0%,
+          #41414166 25%,
+          #53535366 50%,
+          #41414166 75%,
+          #33333366 100%
+        );
+        animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite;
+      } 
+      .subtitle {
+        height: 1.2rem;
+        width: 100%;
+        border-radius: 1rem;
+        background: linear-gradient(
+          90deg,
+          #33333366 0%,
+          #41414166 25%,
+          #53535366 50%,
+          #41414166 75%,
+          #33333366 100%
+        );
+        animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite;
+      }
+    }
+  }
+}
+
+@media (max-width: 777px) {
+  ul.movie-grid {
+    flex-direction: column;
+
+    li {
+      flex-basis: 100%;
+      padding: 0;
+    }
+  }
+}
+
+@keyframes movingGradient {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes sosOpacity {
+  0% {filter: opacity(0.75);}
+  20% {filter: opacity(0.50);}
+  60% {filter: opacity(0.25);}
+  20% {filter: opacity(0.50);}
+  100% {filter: opacity(0.75);}
+}
+
+@keyframes sosOpacityImage {
+  0% {filter: opacity(0.25);}
+  20% {filter: opacity(0.60);}
+  60% {filter: opacity(0.90);}
+  20% {filter: opacity(0.60);}
+  100% {filter: opacity(0.25);}
+}
+

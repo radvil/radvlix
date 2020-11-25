@@ -1,0 +1,86 @@
+<!-- topnav toolbar -->
+<div
+  class="toolbar"
+  [style.position]="(isStickyHeader$ | async) ? 'fixed' : 'inherit'"
+  [class.rad-border]="isStickyHeader$ | async"
+>
+  <mat-toolbar>
+    <!-- topnav button drawer -->
+    <button mat-icon-button class="btn__menu" (click)="sendEventToLayout()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- topnav branding md ? -->
+    <div routerLink="" class="branding">
+      <img src="assets/icons/logo.png" />
+    </div>
+
+    <!-- <div class="searchbox">
+      <input type="text" placeholder="Search movie" />
+    </div> -->
+
+    <!-- topnav spacer -->
+    <span class="spacer"></span>
+
+    <div class="menu_top">
+      <ng-container *ngFor="let menu of menu.items">
+        <button mat-button [routerLink]="menu.link" routerLinkActive="active">
+          {{ menu.label }}
+        </button>
+      </ng-container>
+    </div>
+
+    <!-- topnav spacer -->
+    <span class="spacer"></span>
+
+    <!-- menu toolbar button -->
+    <div class="toolbar-button">
+      <button mat-icon-button class="search" (click)="openSearchDialog()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="favorites" (click)="openFavoritesSheet()">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="user"
+        [matMenuTriggerFor]="toolbarUserMenu"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+
+    <!-- menu toolbar container -->
+    <mat-menu #toolbarUserMenu="matMenu">
+      <!-- menu register -->
+      <button mat-menu-item routerLink="auth/register">
+        <mat-icon>person_add</mat-icon>
+        <span>Register</span>
+      </button>
+
+      <!-- menu login -->
+      <button mat-menu-item routerLink="auth/login">
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login</span>
+      </button>
+
+      <!-- menu user profile -->
+      <button mat-menu-item routerLink="user">
+        <mat-icon>account_circle</mat-icon>
+        <span>Profile</span>
+      </button>
+
+      <!-- menu settings -->
+      <button mat-menu-item routerLink="settings">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+
+      <!-- menu logout -->
+      <button (click)="logoutUser()" mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</div>

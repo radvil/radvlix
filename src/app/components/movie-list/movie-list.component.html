@@ -1,0 +1,26 @@
+<section>
+  <div class="heading">
+    <h1>{{ itemsHeadText }}</h1>
+  </div>
+
+  <div class="movieList">
+    <div
+      *ngFor="let item of items"
+      class="movie"
+      [title]="setTitle(item)"
+      (click)="showItemDetail(item.id)"
+    >
+      <img [src]="item?.thumbnailPath" [alt]="setTitle(item)" />
+      <div class="meta">
+        <h2 class="title">{{ setTitle(item) }}</h2>
+        <div class="date">
+          <span>{{ setReleaseDate(item) | date }}</span>
+        </div>
+        <div class="rating">
+          <mat-icon>grade</mat-icon>&nbsp;
+          <span>{{ item?.voteAverage }} / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

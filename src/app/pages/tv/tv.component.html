@@ -1,0 +1,27 @@
+<ng-container *ngIf="isLoading">
+  <rad-ghost-list></rad-ghost-list>
+  <rad-ghost-list></rad-ghost-list>
+</ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <!-- popular -->
+  <rad-movie-list
+    [itemsHeadText]="'Popular'"
+    [itemsType]="'TVS'"
+    [items]="popularTvs"
+  ></rad-movie-list>
+
+  <!-- on going -->
+  <rad-movie-list
+    [itemsHeadText]="'On Going'"
+    [itemsType]="'TVS'"
+    [items]="onGoingTvs"
+  ></rad-movie-list>
+
+  <!-- top rated -->
+  <rad-movie-list
+    [itemsHeadText]="'Top Rated'"
+    [itemsType]="'TVS'"
+    [items]="topRatedTvs"
+  ></rad-movie-list>
+</ng-container>

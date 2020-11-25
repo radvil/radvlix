@@ -1,0 +1,22 @@
+// sidenav list items
+.mat-nav-list {
+	padding: 0px;
+
+	a.mat-list-item {
+		.spacer {
+			width: 22px;
+		}
+
+		&.active {
+      background-color: #c90404;
+      color: white;
+      font-weight: bold;
+		}
+	}
+}
+
+.text-red  {
+  color: #c90404;
+  text-transform: lowercase;
+  font-weight: bolder;
+}

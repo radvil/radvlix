@@ -1,0 +1,10 @@
+// $rad-white-primary: mat-palette($mat-grey, 200, 500, 300);
+$rad-white-primary: mat-palette($mat-red, 700, 400, 200);
+$rad-white-accent: mat-palette($mat-cyan, 700);
+$rad-white-warn: mat-palette($mat-red, A700);
+
+$rad-white-theme: mat-light-theme(
+  $rad-white-primary,
+  $rad-white-accent,
+  $rad-white-warn
+);
