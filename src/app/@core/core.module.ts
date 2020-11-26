@@ -34,7 +34,7 @@ const PROVIDERS = [
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([SettingsEffects]),
     StoreDevtoolsModule.instrument({
-      name: 'Angular Movie X',
+      name: 'Radvlix',
       logOnly: environment.production
     }),
   ]

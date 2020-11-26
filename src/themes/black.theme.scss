@@ -1,9 +1,6 @@
 $rad-black-primary: mat-palette($mat-red, 700, 400, 200);
-$rad-black-accent: mat-palette($mat-blue, A700);
-//$rad-black-accent: mat-palette($mat-amber, 500);
-//$rad-black-accent: mat-palette($mat-cyan, 700);
+$rad-black-accent: mat-palette($mat-light-blue, 400);
 $rad-black-warn: mat-palette($mat-deep-orange, A400);
-//$rad-black-warn: mat-palette($mat-red, A700);
 
 $rad-black-theme: mat-dark-theme(
 	$rad-black-primary,

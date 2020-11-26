@@ -10,7 +10,12 @@
       [title]="setTitle(item)"
       (click)="showItemDetail(item.id)"
     >
-      <img [src]="item?.thumbnailPath" [alt]="setTitle(item)" />
+      <img
+        [defaultImage]="item?.thumbnailPath"
+        [lazyLoad]="item?.posterSmallPath"
+        [errorImage]="errorImagePath"
+        [alt]="setTitle(item)"
+      />
       <div class="meta">
         <h2 class="title">{{ setTitle(item) }}</h2>
         <div class="date">

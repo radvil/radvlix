@@ -13,6 +13,7 @@ export interface Tv {
   voteAverage: number;
   popularity: number;
   posterPath: string;
+  posterSmallPath: string;
   thumbnailPath: string;
   overview: string;
   firstAirDate: string;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 import { Movie, MovieDetail, Company, Country } from '../interfaces';
 
@@ -11,37 +11,33 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   public getPopularMovies(): Observable<Movie[]> {
-    const url = this.makeUrl('movie/popular');
+    const url = this.makeUrl('/movie/popular');
 
     return this.http.get<Movie[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((movie: Movie) => this.setMovieData(movie)))
     );
   }
 
   public getTopRatedMovies(): Observable<Movie[]> {
-    const url = this.makeUrl('movie/top_rated');
+    const url = this.makeUrl('/movie/top_rated');
 
     return this.http.get<Movie[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((movie: Movie) => this.setMovieData(movie)))
     );
   }
 
   public getUpcomingMovies(): Observable<Movie[]> {
-    const url = this.makeUrl('movie/upcoming');
+    const url = this.makeUrl('/movie/upcoming');
 
     return this.http.get<Movie[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((movie: Movie) => this.setMovieData(movie)))
     );
   }
 
   public getMovieDetail(movieId: string): Observable<MovieDetail> {
-    const url = this.makeUrl(`movie/${movieId}`);
+    const url = this.makeUrl(`/movie${movieId}`);
 
     return this.http.get<MovieDetail[]>(url).pipe(
-      // delay(2000),
       map(res => this.setMovieDetail(res))
     );
   }
@@ -58,7 +54,8 @@ export class MoviesService {
       voteAverage: response.vote_average,
       popularity: response.popularity,
       posterPath: `${env.apiPosterUrl}/${env.posterSize}/${response.poster_path}`,
-      thumbnailPath: `${env.apiPosterUrl}/${env.posterThumbnailSize}/${response.poster_path}`,
+      posterSmallPath: `${env.apiPosterUrl}/${env.posterSmallSize}/${response.poster_path}`,
+      thumbnailPath: `${env.apiPosterUrl}/${env.thumbnailSize}/${response.poster_path}`,
       isAdultMovie: response.adult,
       overview: response.overview,
       releaseDate: response.release_date,

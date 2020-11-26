@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatIconModule } from '@angular/material/icon';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { MovieListComponent } from './movie-list.component';
 
@@ -12,6 +13,7 @@ import { MovieListComponent } from './movie-list.component';
   imports: [
     CommonModule,
     MatIconModule,
+    LazyLoadImageModule,
   ],
   exports: [MovieListComponent]
 })

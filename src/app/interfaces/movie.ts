@@ -8,6 +8,7 @@ export interface Movie {
   voteAverage: number;
   popularity: number;
   posterPath: string;
+  posterSmallPath: string;
   thumbnailPath: string;
   isAdultMovie: boolean;
   overview: string;

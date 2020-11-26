@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 import { Tv } from '../interfaces';
 
@@ -11,28 +11,25 @@ export class TvsService {
   constructor(private http: HttpClient) { }
 
   public getPopularTvs(): Observable<Tv[]> {
-    const url = this.makeUrl('tv/popular');
+    const url = this.makeUrl('/tv/popular');
 
     return this.http.get<Tv[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((tv: Tv) => this.setTvData(tv)))
     );
   }
 
   public getTopRatedTvs(): Observable<Tv[]> {
-    const url = this.makeUrl('tv/top_rated');
+    const url = this.makeUrl('/tv/top_rated');
 
     return this.http.get<Tv[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((tv: Tv) => this.setTvData(tv)))
     );
   }
 
   public getOnGoingTvs(): Observable<Tv[]> {
-    const url = this.makeUrl('tv/on_the_air');
+    const url = this.makeUrl('/tv/on_the_air');
 
     return this.http.get<Tv[]>(url).pipe(
-      // delay(2000),
       map(res => res['results'].map((tv: Tv) => this.setTvData(tv)))
     );
   }
@@ -49,7 +46,8 @@ export class TvsService {
       voteAverage: response.vote_average,
       popularity: response.popularity,
       posterPath: `${env.apiPosterUrl}/${env.posterSize}/${response.poster_path}`,
-      thumbnailPath: `${env.apiPosterUrl}/${env.posterThumbnailSize}/${response.poster_path}`,
+      posterSmallPath: `${env.apiPosterUrl}/${env.posterSmallSize}/${response.poster_path}`,
+      thumbnailPath: `${env.apiPosterUrl}/${env.thumbnailSize}/${response.poster_path}`,
       overview: response.overview,
       firstAirDate: response.first_air_date,
     } as Tv;
