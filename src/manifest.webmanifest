@@ -1,8 +1,8 @@
 {
   "name": "radvlix",
   "short_name": "radvlix",
-  "theme_color": "#DD0031",
-  "background_color": "#181818",
+  "theme_color": "#181818",
+  "background_color": "#DD0031",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

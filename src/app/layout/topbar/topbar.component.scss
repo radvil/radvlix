@@ -26,24 +26,15 @@
 }
 
 .rad-border {
-  border-bottom: 1px solid #4e4e4e;
+  border-bottom: 1.5px solid #69696969;
 }
 
 .menu_top button {
   font-size: 1rem;
   font-weight: bolder;
   margin-right: 10px;
-  border-radius: 0;
+  border-radius: 2rem;
   height: 2.7rem;
   padding: 0 1.2rem;
-
-  &.active {
-    background-color: #DD0031;
-  }
 }
 
-.toolbar-button {
-  .favorites mat-icon {
-    color: #DD0031;
-  }
-}

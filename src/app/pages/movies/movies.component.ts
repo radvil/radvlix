@@ -4,11 +4,11 @@ import { Movie } from 'src/app/interfaces';
 import { MoviesService } from 'src/app/services';
 
 @Component({
-  selector: 'rad-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
+  selector: 'rad-movies',
+  templateUrl: './movies.component.html',
+  styleUrls: ['./movies.component.scss'],
 })
-export class MovieComponent implements OnInit {
+export class MoviesComponent implements OnInit {
   constructor(private movieSrv: MoviesService) {}
 
   public popularMovies: Movie[] = [];

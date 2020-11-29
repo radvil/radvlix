@@ -1,0 +1,149 @@
+.img-container {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 55px);
+  object-fit: cover;
+  object-position: center;
+  margin-left: -1rem;
+  filter: grayscale(1);
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 55px);
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-left: -1rem;
+  background-color: #0006;
+
+  @media (max-width: 777px) {
+    justify-content: start;
+    .detail-card {
+      flex-direction: column;
+      width: 100vw;
+      height: calc(100vh - 55px);
+    
+      img {
+        height: 20vh;
+      }
+    }
+  }
+}
+
+.detail-card {
+  width: 85vw;
+  height: 75vh;
+  background-color: #00000066;
+  color: white;
+  backdrop-filter: blur(3px);
+  display: flex;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+    height: 100%;
+  }
+
+  .detail-meta {
+    padding: 0 1.5rem 1.5rem;
+    overflow-y: scroll;
+
+    .vote,
+    .revenue {
+      display: flex;
+      align-items: center;
+      mat-icon {
+        color: #f6c700;
+      }
+    }
+
+    .budget {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      mat-icon {
+        color: #dd0031;
+        font-size: 1.3rem;
+      }
+    }
+
+    .revenue {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      mat-icon {
+        color: #00f64a;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+  }
+}
+
+ul.casts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+    }
+    .name {
+      cursor: pointer;
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+
+  button {
+    margin-right: 1rem;
+    border-radius: 0;
+  }
+}
+
+.section-card {
+  color: #181818;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.productions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .company {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    img {
+      height: 3rem;
+      border-radius: 50%;
+    }
+  }
+}

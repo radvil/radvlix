@@ -7,13 +7,10 @@
 
 @import '../themes/app.theme';
 @import '../app/layout/layout.theme';
-@import '../app/layout/footer/footer.theme';
 
 @mixin custom-components-theme($theme) {
 	@include rad-reset-theme($theme);
 	@include rad-main-layout-theme($theme);
-	@include rad-footer-theme($theme);
-
 }
 
 .white-theme {

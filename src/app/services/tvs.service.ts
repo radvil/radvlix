@@ -45,9 +45,9 @@ export class TvsService {
       voteCount: response.vote_count,
       voteAverage: response.vote_average,
       popularity: response.popularity,
-      posterPath: `${env.apiPosterUrl}/${env.posterSize}/${response.poster_path}`,
-      posterSmallPath: `${env.apiPosterUrl}/${env.posterSmallSize}/${response.poster_path}`,
-      thumbnailPath: `${env.apiPosterUrl}/${env.thumbnailSize}/${response.poster_path}`,
+      posterPath: `${env.apiPosterUrl}/${env.posterSize}${response.poster_path}`,
+      posterSmallPath: `${env.apiPosterUrl}/${env.posterSmallSize}${response.poster_path}`,
+      thumbnailPath: `${env.apiPosterUrl}/${env.thumbnailSize}${response.poster_path}`,
       overview: response.overview,
       firstAirDate: response.first_air_date,
     } as Tv;

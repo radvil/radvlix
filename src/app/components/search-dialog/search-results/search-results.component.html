@@ -1,0 +1,21 @@
+<ul class="movie-grid">
+  <li *ngFor="let item of items" (click)="showItem(item.id)">
+    <div class="image">
+      <img
+        [lazyLoad]="item?.thumbnailPath"
+        [errorImage]="errorImagePath"
+        [alt]="item?.title"
+      />
+    </div>
+
+    <div class="meta">
+      <div class="title">{{ item?.title }}</div>
+      <div class="date">{{ item?.releaseDate | date }}</div>
+      <div class="rate">
+        <mat-icon>grade</mat-icon>&nbsp; <span>{{ item?.voteAverage }}</span
+        >&nbsp;
+        <span>( {{ item?.voteCount }} )</span>
+      </div>
+    </div>
+  </li>
+</ul>

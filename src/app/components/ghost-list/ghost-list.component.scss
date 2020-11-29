@@ -23,21 +23,6 @@
   100% {filter: opacity(0.25);}
 }
 
-@keyframes cardSlide {
-  from {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-  }
-  to {
-    height: 280px;
-    width: 180px;
-    border-radius: 1rem;
-  }
-}
-
-
-
 .loading-ghost {
   .head {
     height: 40px;
@@ -61,13 +46,14 @@
     flex-wrap: nowrap;
 
     .item {
-      height: 280px;
-      min-width: 180px;
+      min-height: 400px;
+      min-width: 270px;
       margin: 0 1rem 1rem 0;
       border-radius: 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 1rem;
 
       background: linear-gradient(
         90deg,
@@ -77,14 +63,7 @@
         #41414166 75%,
         #33333366 100%
       );
-      // background-position: 0px 0px;
-      // background-repeat: repeat;
-      animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite, cardSlide 1.5s infinite;
-
-      img {
-        width: 100px;
-        animation: sosOpacityImage 1.5s infinite;
-      }
+      animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite;
     }
   }
 }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GhostListComponent implements OnInit {
 
-  public ghostLoopCount = new Array(12);
+  public ghostLoopCount = new Array(4);
   
   constructor() { }
 

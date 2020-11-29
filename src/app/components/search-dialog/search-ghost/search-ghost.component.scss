@@ -1,4 +1,4 @@
-ul.movie-grid {
+ul.ghost-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -14,7 +14,6 @@ ul.movie-grid {
     margin-bottom: 1rem;
     border-radius: 1rem;
     padding: 1rem;
-    // background-color: #222222;
 
     display: flex;
     flex-direction: row;
@@ -36,11 +35,6 @@ ul.movie-grid {
         #33333366 100%
       );
       animation: movingGradient 3s linear infinite, sosOpacity 1.5s infinite;
-
-      img {
-        width: inherit;
-        animation: sosOpacityImage 1.5s infinite;
-      }
     }
 
     .meta {
@@ -79,11 +73,10 @@ ul.movie-grid {
 }
 
 @media (max-width: 777px) {
-  ul.movie-grid {
+  ul.ghost-grid {
     flex-direction: column;
-
+    
     li {
-      flex-basis: 100%;
       padding: 0;
     }
   }
@@ -105,12 +98,3 @@ ul.movie-grid {
   20% {filter: opacity(0.50);}
   100% {filter: opacity(0.75);}
 }
-
-@keyframes sosOpacityImage {
-  0% {filter: opacity(0.25);}
-  20% {filter: opacity(0.60);}
-  60% {filter: opacity(0.90);}
-  20% {filter: opacity(0.60);}
-  100% {filter: opacity(0.25);}
-}
-

@@ -1,5 +1,6 @@
 import { Company } from './company';
 import { Country } from './country';
+import { Genre } from './genre';
 
 export interface Movie {
   id: number;
@@ -17,12 +18,15 @@ export interface Movie {
 
 export interface MovieDetail extends Movie {
   imdbId: string;
+  backdropPath: string;
   originalLanguage: string;
   originalTitle: string;
   productionCompanies: Company[];
   productionCountries: Country[];
   revenue: number;
+  budget: number;
   runtime: number;
   status: string;
   hasVideo: boolean;
+  genres: Genre[];
 }

@@ -1,0 +1,31 @@
+<div id="search-dialog">
+  <mat-form-field color="primary" appearance="outline">
+    <mat-label>Search movies / tv shows</mat-label>
+    <input
+      matInput
+      (keyup)="searchTerm$.next($event)"
+      type="text"
+      name="search"
+      placeholder="Type movie title..."
+      id="search-input"
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <mat-dialog-content>
+    <ng-container *ngIf="isLoading && !searchResults">
+      <rad-search-ghost></rad-search-ghost>
+    </ng-container>
+
+    <ng-container *ngIf="searchResults && !isLoading">
+      <rad-search-results
+        (showItemEvent)="showMovie($event)"
+        [items]="searchResults | slice: 0:10"
+      ></rad-search-results>
+    </ng-container>
+
+    <ng-container *ngIf="noResultsFound">
+      <rad-not-found-card [searchTerm]="notFoundTerm"></rad-not-found-card>
+    </ng-container>
+  </mat-dialog-content>
+</div>

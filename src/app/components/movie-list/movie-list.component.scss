@@ -31,10 +31,10 @@
     height: 400px;
     width: 270px;
 
-    img {
-      // width: 100%;
+    img { 
       height: 100%;
       object-fit: cover;
+      border-radius: 1rem;
     }
 
     .meta {
@@ -47,6 +47,7 @@
       background-color: #000000d9;
       color: white;
       padding: 10px;
+      border-radius: 1rem;
 
       .rating,
       .date {
@@ -90,11 +91,12 @@
     }
 
     .movie .meta {
-      width: inherit;
       height: unset;
       top: unset;
       left: 0;
       right: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
 
       display: flex;
       flex-direction: column;

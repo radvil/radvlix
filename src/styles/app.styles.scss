@@ -21,21 +21,18 @@ body {
 
 // Custom dynamic theme
 .black-theme {
-  .mat-drawer-container,
+  .footer,
+  .mat-drawer,
   .mat-menu-panel,
   .mat-select-panel,
-  .footer {
-    background-color: #181818 !important;
-  }
-  .mat-toolbar.mat-primary,
-  .mat-drawer,
-  .footer {
-    background-color: #181818 !important;
-  }
-  .mat-flat-button.mat-primary,
-  .mat-raised-button.mat-primary,
   .mat-fab.mat-primary,
-  .mat-mini-fab.mat-primary {
+  .mat-drawer-container,
+  .mat-dialog-container,
+  .mat-toolbar.mat-primary,
+  .mat-mini-fab.mat-primary,
+  .mat-bottom-sheet-container,
+  .mat-flat-button.mat-primary,
+  .mat-raised-button.mat-primary {
     background-color: #181818 !important;
   }
   .tile_actions {
@@ -54,12 +51,6 @@ body {
       color: #cccccc;
     }
   }
-  .mat-bottom-sheet-container {
-    background-color: #181818 !important;
-  }
-  .mat-dialog-container {
-    background-color: #181818 !important;
-  }
 }
 
 .white-theme {
@@ -67,6 +58,7 @@ body {
     ul {
       background-color: #f0f0f0 !important;
       color: #181818;
+      
       li:hover {
         background-color: #e6e6e6 !important;
         border-radius: 30px;
@@ -85,6 +77,9 @@ body {
       color: #333333;
     }
   }
+  #not-found.container {
+    color: #181818;
+  }
 }
 
 .search-dialog {
@@ -101,8 +96,7 @@ body {
 
 .ng-lazyloading {
   filter: blur(5px);
-  transform: scale(1.1);
-  transition: all 2s ease-in-out;
+  transition: all 2s ease-out;
 }
 
 .ng-lazyloaded {

@@ -1,6 +1,9 @@
 .footer {
 	flex: 0 0 auto;
-	padding: 0 20px;
+  padding: 0 20px;
+  // margin-top: 2rem;
+  background-color: #000;
+  color: white;
 
 	.row {
 		padding: 10px 0;
@@ -10,6 +13,7 @@
 				transition: padding 0.5s;
 				display: inline-block;
 				padding: 20px 5px 0;
+        color: white;
 
 				&:hover {
 					text-decoration: none;
@@ -39,6 +43,10 @@
 					}
 				}
 			}
-		}
+    }
+    
+    .year {
+      color: #DD0031;
+    }
 	}
 }

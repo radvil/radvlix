@@ -16,7 +16,7 @@
 	}
 
 	a {
-		color: mat-color($foreground, text);
+		color: mat-color($accent, lighter);
 
 		&:hover {
 			color: mat-color($accent);

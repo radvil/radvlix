@@ -5,11 +5,11 @@ import { Tv } from 'src/app/interfaces';
 import { TvsService } from 'src/app/services';
 
 @Component({
-  selector: 'rad-tv',
-  templateUrl: './tv.component.html',
-  styleUrls: ['./tv.component.scss'],
+  selector: 'rad-tvs',
+  templateUrl: './tvs.component.html',
+  styleUrls: ['./tvs.component.scss'],
 })
-export class TvComponent implements OnInit {
+export class TvsComponent implements OnInit {
   constructor(private tvSrv: TvsService) {}
 
   public popularTvs: Tv[] = [];

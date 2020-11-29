@@ -1,31 +1,31 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { selectIsStickyHeader } from '../../@core/settings';
-import { FavoritesSheetComponent } from '../favorites-sheet/favorites-sheet.component';
-import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
+import { SearchDialogComponent, FavoritesSheetComponent } from '../../components';
 import * as MenuItems from '../menu-items';
 
 
 @Component({
   selector: 'rad-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss']
+  styleUrls: ['./topbar.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent implements OnInit {
 
   @Output() public onIconClicked = new EventEmitter();
   public isStickyHeader$: Observable<boolean>;
   public menu = MenuItems;
-  private subscription = new Subscription();
 
   constructor(
     private store: Store,
     public bottomSheet: MatBottomSheet,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -41,18 +41,12 @@ export class TopbarComponent implements OnInit {
   }
 
   public openSearchDialog(): void {
-    const dialogRef = this.dialog.open(SearchDialogComponent, {
+    this.dialog.open(SearchDialogComponent, {
       width: '100vw',
       maxWidth: '100vw',
       maxHeight: '80vh',
       panelClass: ['search-dialog']
     });
-
-    this.subscription.add(
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      })
-    );
   }
 
   public logoutUser(): void {

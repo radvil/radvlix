@@ -3,10 +3,10 @@
     <h1>{{ itemsHeadText }}</h1>
   </div>
 
-  <div class="movieList">
+  <div class="movieList" #scrollableDiv>
     <div
-      *ngFor="let item of items"
       class="movie"
+      *ngFor="let item of items"
       [title]="setTitle(item)"
       (click)="showItemDetail(item.id)"
     >
@@ -14,7 +14,10 @@
         [defaultImage]="item?.thumbnailPath"
         [lazyLoad]="item?.posterSmallPath"
         [errorImage]="errorImagePath"
+        [scrollTarget]="scrollableDiv"
         [alt]="setTitle(item)"
+        width="270"
+        height="400"
       />
       <div class="meta">
         <h2 class="title">{{ setTitle(item) }}</h2>

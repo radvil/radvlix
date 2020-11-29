@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
   }
 
   public showItemDetail(itemId: string): void {
-    const preLink = this.itemsType == 'TVS' ? 'tvs' : 'movies';
+    const preLink = this.itemsType == 'TVS' ? 'tv-detail' : 'movie-detail';
     this.router.navigate([preLink, itemId]);
   }
 
