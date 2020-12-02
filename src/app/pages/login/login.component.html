@@ -1,0 +1,70 @@
+<div id="login-container">
+  <mat-card>
+    <div class="card-header">
+      <button mat-icon-button type="button" routerLink="/">
+        <mat-icon>west</mat-icon>
+      </button>
+      <h3>Login</h3>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="loginForm">
+        <!-- email field -->
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>Email Address</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            type="text"
+            placeholder="Enter your email address"
+          />
+          <mat-error *ngIf="email.invalid">{{ emailErrorMessage }}</mat-error>
+        </mat-form-field>
+
+        <!-- password field -->
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            type="password"
+            placeholder="Enter your password"
+          />
+          <mat-error *ngIf="password.invalid">{{
+            passwordErrorMessage
+          }}</mat-error>
+        </mat-form-field>
+
+        <!-- button group -->
+        <div class="form-button-group">
+          <button mat-flat-button color="accent" type="submit">Login</button>
+          <button
+            mat-stroked-button
+            color="accent"
+            type="button"
+            routerLink="/register"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+
+      <div class="login-options">
+        <button
+          matTooltip="Register with Google"
+          mat-icon-button
+          class="google-icon"
+        >
+          <fa-icon [icon]="['fab', 'google']"></fa-icon>
+        </button>
+        <button
+          matTooltip="Register with Facebook"
+          mat-icon-button
+          class="facebook-icon"
+        >
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

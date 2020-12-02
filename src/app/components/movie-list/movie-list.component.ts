@@ -15,7 +15,7 @@ export class MovieListComponent implements OnInit {
   @Input() public items: Array<Movie | Tv>;
   @Input() public itemsType: string;
   @Input() public itemsHeadText: string;
-  public errorImagePath = 'assets/no_image.jpg';
+  public errorImagePath = 'assets/no_image.png';
 
   ngOnInit(): void {
   }

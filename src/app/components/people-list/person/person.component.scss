@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.meta {
+  font-size: 1rem;
+  font-weight: bold;
+  span {
+    font-weight: lighter;
+  }
+}

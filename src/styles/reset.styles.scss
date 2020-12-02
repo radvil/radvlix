@@ -16,6 +16,10 @@ mat-toolbar {
 	height: 55px !important;
 }
 
+.mat-form-field-appearance-fill .mat-fom-field-flex {
+  border-radius: 0 !important;
+}
+
 .mat-drawer-container {
 	position: unset !important;
 }

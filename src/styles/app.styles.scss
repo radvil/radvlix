@@ -35,6 +35,9 @@ body {
   .mat-raised-button.mat-primary {
     background-color: #181818 !important;
   }
+  .mat-card {
+    background-color: #222222 !important;
+  }
   .tile_actions {
     ul {
       background-color: #181818 !important;
@@ -50,6 +53,9 @@ body {
       background-color: #4040407d;
       color: #cccccc;
     }
+  }
+  #login-container, #register-container {
+    background-color: #0d0d0d !important;
   }
 }
 
@@ -79,6 +85,15 @@ body {
   }
   #not-found.container {
     color: #181818;
+  }
+  #movie-detail {
+    .container {
+      background-color: rgb(239 229 229 / 66%) !important;
+    }
+    .detail-card {
+      background-color: rgb(255 255 255 / 65%) !important;
+      color: #181818;
+    }
   }
 }
 

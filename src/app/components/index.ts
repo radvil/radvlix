@@ -12,3 +12,9 @@ export * from './search-dialog/search-dialog.component';
 
 export * from './favorites-sheet/favorites-sheet.module';
 export * from './favorites-sheet/favorites-sheet.component';
+
+export * from './people-list/people-list.module';
+export * from './people-list/people-list.component';
+
+export * from './profile-photo/profile-photo.module';
+export * from './profile-photo/profile-photo.component';

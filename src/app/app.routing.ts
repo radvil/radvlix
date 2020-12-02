@@ -15,6 +15,13 @@ const routes: Routes = [
       )
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then(
+        (m) => m.LoginModule
+      )
+  },
+  {
     path: 'movies',
     loadChildren: () =>
       import('./pages/movies/movies.module').then(
@@ -22,11 +29,11 @@ const routes: Routes = [
       )
   },
   {
-    path: 'movie-detail/:movieId',
+    path: 'register',
     loadChildren: () =>
-      import('./pages/movie-detail/movie-detail.module').then(
-        (m) => m.MovieDetailModule
-      ),
+      import('./pages/register/register.module').then(
+        (m) => m.RegisterModule
+      )
   },
   {
     path: 'settings',
@@ -43,9 +50,23 @@ const routes: Routes = [
       )
   },
   {
-    path: '**',
-    redirectTo: 'movies'
-  }
+    path: 'movie-detail/:movieId',
+    loadChildren: () =>
+      import('./pages/movie-detail/movie-detail.module').then(
+        (m) => m.MovieDetailModule
+      ),
+  },
+  {
+    path: 'credits/:movieIdForCredits',
+    loadChildren: () =>
+      import('./pages/credits/credits.module').then(
+        (m) => m.CreditsModule
+      ),
+  },
+  // {
+  //   path: '**',
+  //   redirectTo: 'movies'
+  // }
 ];
 
 @NgModule({

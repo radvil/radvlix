@@ -1,0 +1,11 @@
+<rad-profile-photo
+  [imagePath]="person?.profilePath"
+  [imageAlt]="person?.originalName"
+  [imageSize]="'7rem'"
+></rad-profile-photo>
+
+<div class="meta">
+  <a href="#">{{ person?.name }}</a>
+  &nbsp;<span>as</span>&nbsp;
+  <span>{{ person?.character }}</span>
+</div>

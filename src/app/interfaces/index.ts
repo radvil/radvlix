@@ -8,3 +8,4 @@ export * from './network';
 export * from './producer';
 export * from './season';
 export * from './tv';
+export * from './person';
