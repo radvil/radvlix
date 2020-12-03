@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // height: calc(100vh - 20vh - 55px); // mins topbar, footer;
   height: calc(100vh - 20vh); // mins footer
 
   position: absolute;
@@ -14,13 +13,17 @@
 
   mat-card {
     max-width: 450px;
-    // min-height: 350px;
     min-height: 63vh;
     width: 50vw;
-    // position: relative;
+
+    mat-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+    }
 
     .card-header {
-      // display: flex;
       height: 4rem;
       position: absolute;
       top: 0;
@@ -81,7 +84,6 @@
   .form-button-group {
     display: flex;
     justify-content: space-between;
-    // margin-top: 1rem;
 
     button {
       flex-basis: 46%;
@@ -89,6 +91,10 @@
       border-radius: 0;
       font-size: 1.2rem;
       font-weight: bolder;
+
+      &:nth-child(1):disabled {
+        filter: opacity(0.7);
+      }
     }
   }
 
@@ -97,7 +103,6 @@
 
     mat-card {
       width: 100vw;
-      // height: calc(100vh - 10rem);
     }
 
     .login-options {

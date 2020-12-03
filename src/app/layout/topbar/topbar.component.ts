@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/@shared';
+import { AuthService } from 'src/app/services';
 
 import { selectIsStickyHeader } from '../../@core/settings';
 import { SearchDialogComponent, FavoritesSheetComponent } from '../../components';
@@ -14,7 +16,6 @@ import * as MenuItems from '../menu-items';
   selector: 'rad-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent implements OnInit {
 
@@ -23,13 +24,16 @@ export class TopbarComponent implements OnInit {
   public menu = MenuItems;
 
   constructor(
-    private store: Store,
+    private _store: Store,
+    private _router: Router,
+    private _authSrv: AuthService,
+    private _notification: NotificationService,
     public bottomSheet: MatBottomSheet,
     public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.isStickyHeader$ = this.store.select(selectIsStickyHeader);
+    this.isStickyHeader$ = this._store.select(selectIsStickyHeader);
   }
 
   public sendEventToLayout(): void {
@@ -50,7 +54,11 @@ export class TopbarComponent implements OnInit {
   }
 
   public logoutUser(): void {
-    // todo
-    console.log('TODO')
+    this._authSrv.logout()
+      .then(result => {
+        this._notification.success('You are now logged out');
+        this._router.navigate(['/']);
+      })
+      .catch(error => this._notification.error(`Something went wrong!`));
   }
 }

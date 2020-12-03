@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
@@ -15,6 +15,7 @@ import { MoviesService } from 'src/app/services';
   selector: 'rad-search-dialog',
   templateUrl: './search-dialog.component.html',
   styleUrls: ['./search-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchDialogComponent implements OnDestroy {
   public searchTerm$ = new Subject<string>();

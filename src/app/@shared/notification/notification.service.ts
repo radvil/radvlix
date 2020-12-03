@@ -10,11 +10,11 @@ export class NotificationService {
 		private readonly zone: NgZone
 	) {}
 
-	default(message: string) {
+	default(message: string, duration = 2000, action?: string) {
 		this.show(message, {
-			duration: 2000,
-			panelClass: 'default-notification-overlay'
-		});
+			duration,
+      panelClass: 'default-notification-overlay',
+		}, action);
 	}
 
 	info(message: string) {
@@ -45,9 +45,9 @@ export class NotificationService {
 		});
 	}
 
-	private show(message: string, configuration: MatSnackBarConfig) {
+	private show(message: string, configuration: MatSnackBarConfig, action = null) {
 		// Need to open snackBar from Angular zone to prevent issues with its position per
 		// https://stackoverflow.com/questions/50101912/snackbar-position-wrong-when-use-errorhandler-in-angular-5-and-material
-		this.zone.run(() => this.snackBar.open(message, null, configuration));
+		this.zone.run(() => this.snackBar.open(message, action, configuration));
 	}
 }

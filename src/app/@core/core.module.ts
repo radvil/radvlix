@@ -1,8 +1,11 @@
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment as env } from '../../environments/environment';
 
 // 3rd parties libs
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -28,6 +31,9 @@ const PROVIDERS = [
   imports: [
     HttpClientModule,
     // 3rd parties
+    AngularFireModule.initializeApp(env.firebaseConfig),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     LoadingBarModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
@@ -35,7 +41,7 @@ const PROVIDERS = [
     EffectsModule.forRoot([SettingsEffects]),
     StoreDevtoolsModule.instrument({
       name: 'Radvlix',
-      logOnly: environment.production
+      logOnly: env.production
     }),
   ]
 })

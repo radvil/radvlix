@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// 3rd parties
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
 	faCog,
@@ -16,8 +15,6 @@ import {
 	faInstagram,
 	faYoutube
 } from '@fortawesome/free-brands-svg-icons';
-
-// app configs
 import { environment as env } from '../../../environments/environment';
 
 @Component({
@@ -29,15 +26,10 @@ export class FooterComponent implements OnInit {
 	isProd = env.production;
 	envName = env.envName;
 	version = env.version;
-	year = new Date().getFullYear();
+	currentYear = new Date().getFullYear();
 
 	constructor(public faIconLibrary: FaIconLibrary) {
 		faIconLibrary.addIcons(
-			faCog,
-			faBars,
-			faRocket,
-			faPowerOff,
-			faUserCircle,
 			faGithub,
 			faFacebook,
 			faTwitter,

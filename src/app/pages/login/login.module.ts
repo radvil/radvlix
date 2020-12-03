@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -26,6 +27,7 @@ import { LoginComponent } from './login.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
     
     FontAwesomeModule,
   ]

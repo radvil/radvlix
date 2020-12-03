@@ -15,8 +15,45 @@ body {
   }
 }
 
+mat-toolbar {
+	height: 55px !important;
+}
+
 .cdk-overlay-dark-backdrop {
   background-color: rgba(0 0 0 / 74%) !important;
+}
+
+.mat-form-field-appearance-fill .mat-fom-field-flex {
+  border-radius: 0 !important;
+}
+
+.mat-drawer-container {
+	position: unset !important;
+}
+
+.mat-drawer-inner-container {
+	overflow-x: hidden !important;
+}
+
+.mat-menu-content {
+	padding: 0px !important;
+}
+
+.mat-menu-panel {
+	min-height: 0px !important;
+	border-radius: 0px !important;
+}
+
+.mat-dialog-container {
+	border-radius: 0px !important;
+}
+
+.mat-button.nav-link {
+	border-radius: 0px !important;
+}
+
+.mat-list-item-content {
+	padding: 0 25px !important;
 }
 
 // Custom dynamic theme
@@ -110,8 +147,8 @@ body {
 }
 
 .ng-lazyloading {
-  filter: blur(5px);
-  transition: all 2s ease-out;
+  filter: blur(4px);
+  transition: all 2s ease-in-out;
 }
 
 .ng-lazyloaded {

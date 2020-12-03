@@ -1,5 +1,7 @@
 <div id="register-container">
   <mat-card>
+    <mat-progress-bar *ngIf="isSubmitting" mode="query"></mat-progress-bar>
+
     <div class="card-header">
       <button mat-icon-button routerLink="/">
         <mat-icon>west</mat-icon>
@@ -8,7 +10,7 @@
     </div>
 
     <div class="card-body">
-      <form [formGroup]="registrationForm">
+      <form [formGroup]="registrationForm" (ngSubmit)="registerEmail()">
         <!-- email field -->
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Email Address</mat-label>
@@ -37,7 +39,14 @@
 
         <!-- button group -->
         <div class="form-button-group">
-          <button mat-flat-button color="accent" type="submit">Register</button>
+          <button
+            [disabled]="registrationForm.invalid || isSubmitting"
+            mat-flat-button
+            color="accent"
+            type="submit"
+          >
+            Register
+          </button>
           <button
             mat-stroked-button
             color="accent"

@@ -1,5 +1,7 @@
 <div id="login-container">
   <mat-card>
+    <mat-progress-bar *ngIf="isSubmitting" mode="query"></mat-progress-bar>
+
     <div class="card-header">
       <button mat-icon-button type="button" routerLink="/">
         <mat-icon>west</mat-icon>
@@ -8,7 +10,7 @@
     </div>
 
     <div class="card-body">
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (ngSubmit)="loginWithEmail()">
         <!-- email field -->
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Email Address</mat-label>
@@ -37,7 +39,14 @@
 
         <!-- button group -->
         <div class="form-button-group">
-          <button mat-flat-button color="accent" type="submit">Login</button>
+          <button
+            [disabled]="loginForm.invalid || isSubmitting"
+            mat-flat-button
+            color="accent"
+            type="submit"
+          >
+            Login
+          </button>
           <button
             mat-stroked-button
             color="accent"
@@ -51,14 +60,16 @@
 
       <div class="login-options">
         <button
-          matTooltip="Register with Google"
+          (click)="loginWithGoogle()"
+          matTooltip="Login with Google"
           mat-icon-button
           class="google-icon"
         >
           <fa-icon [icon]="['fab', 'google']"></fa-icon>
         </button>
         <button
-          matTooltip="Register with Facebook"
+          (click)="loginWithFacebook()"
+          matTooltip="Login with Facebook"
           mat-icon-button
           class="facebook-icon"
         >

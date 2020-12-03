@@ -19,6 +19,13 @@
     width: 50vw;
     // position: relative;
 
+    mat-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+    }
+
     .card-header {
       // display: flex;
       height: 4rem;
