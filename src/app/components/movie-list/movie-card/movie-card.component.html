@@ -1,0 +1,24 @@
+<div
+  class="movie-card"
+  [title]="setMovieTitle(movie)"
+  (click)="showMovieDetail(movie.id)"
+>
+  <img
+    [defaultImage]="movie?.thumbnailPath"
+    [lazyLoad]="movie?.posterSmallPath"
+    [errorImage]="errorImagePath"
+    [alt]="setMovieTitle(movie)"
+    width="270"
+    height="400"
+  />
+  <div class="meta">
+    <h2 class="title">{{ setMovieTitle(movie) }}</h2>
+    <div class="date">
+      <span>{{ setMovieReleaseDate(movie) | date }}</span>
+    </div>
+    <div class="rating">
+      <mat-icon>grade</mat-icon>&nbsp;
+      <span>{{ movie?.voteAverage }} / 10</span>
+    </div>
+  </div>
+</div>

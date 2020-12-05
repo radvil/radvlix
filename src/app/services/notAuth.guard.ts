@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NotAuthGuard implements CanActivate {
 
   constructor(private _authSrv: AuthService, private _router: Router, public _snackBar: MatSnackBar) {}
 
@@ -16,11 +16,12 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this._authSrv.user$.pipe(
-      map(user => !!user),
-      tap(loggedIn => {
-        if (!loggedIn) {
-          this._snackBar.open('Please login first!');
-          this._router.navigate(['/login']);
+      map(user => !user),
+      tap(loggedOut => {
+        if (!loggedOut) {
+          this._snackBar.open('Not allowed!');
+          this._router.navigate(['/']);
+          return false;
         }
       })
     )

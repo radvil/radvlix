@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { MovieListComponent } from './movie-list.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 
 
 @NgModule({
-  declarations: [MovieListComponent],
+  declarations: [MovieListComponent, MovieCardComponent],
   imports: [
     CommonModule,
     MatIconModule,

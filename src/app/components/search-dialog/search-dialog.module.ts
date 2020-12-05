@@ -14,11 +14,15 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { NotFoundCardModule } from '../not-found-card/not-found-card.module';
 import { SearchDialogComponent } from './search-dialog.component';
 import { SearchGhostComponent } from './search-ghost/search-ghost.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchItemComponent } from './search-item/search-item.component';
 
 
 @NgModule({
-  declarations: [SearchDialogComponent, SearchGhostComponent, SearchResultsComponent],
+  declarations: [
+    SearchDialogComponent, 
+    SearchGhostComponent, 
+    SearchItemComponent
+  ],
   imports: [
     CommonModule,
 
@@ -34,6 +38,10 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     // custom
     NotFoundCardModule,
   ],
-  exports: [SearchDialogComponent, SearchGhostComponent, SearchResultsComponent]
+  exports: [
+    SearchDialogComponent, 
+    SearchGhostComponent,
+    SearchItemComponent,
+  ]
 })
 export class SearchDialogModule { }

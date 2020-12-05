@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
@@ -21,7 +20,6 @@ export class RegisterComponent implements OnInit {
     public faIconLibrary: FaIconLibrary,
     private _authSrv: AuthService,
     private _notification: NotificationService,
-    private _router: Router,
   ) {
     faIconLibrary.addIcons(faGoogle, faFacebook);
   }
@@ -39,19 +37,17 @@ export class RegisterComponent implements OnInit {
   public registerEmail(): void {
     if (this.registrationForm.valid) {
       this.isSubmitting = true;
-      this._authSrv.doRegisterByEmail(this.registrationForm.value)
-        .then(result => this.doAfterRegistered(result))
+      this._authSrv.emailSignUp(this.registrationForm.value)
+        .then(_ => this.doAfterRegistered())
         .catch(error => this.catchRegistrationError(error));
     }
   }
 
-  private doAfterRegistered(response: any): void {    
-    const subject = response.user.displayName || response.user.email;
-    this._notification.default(`You are now registered in as ${subject}`, 5000, 'close');
+  private doAfterRegistered(): void {    
+    this._notification.default(`You are now registered`, 5000, 'close');
 
     setTimeout(() => {
       this.isSubmitting = false;
-      this._router.navigate(['/login']);
     }, 1000);
   }
 

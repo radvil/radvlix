@@ -1,18 +1,3 @@
-@keyframes darky {
-  0% {
-    background-color: #00000063;
-  }
-  20% {
-    background-color: #00000081;
-  }
-  60% {
-    background-color: #0000009d;
-  }
-  100% {
-    background-color: #000000b0;
-  }
-}
-
 .movieList {
   display: flex;
   flex-wrap: nowrap;
@@ -22,58 +7,6 @@
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  .movie {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    position: relative;
-    // height: 400px;
-    // width: 270px;
-
-    img { 
-      // height: 100%;
-      object-fit: cover;
-      border-radius: 1rem;
-    }
-
-    .meta {
-      display: none;
-      position: absolute;
-      top: 0px;
-      bottom: 4px;
-      left: 0px;
-      right: 0px;
-      background-color: #000000d9;
-      color: white;
-      padding: 10px;
-      border-radius: 1rem;
-
-      .rating,
-      .date {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .rating {
-        mat-icon {
-          font-size: 22px;
-          color: yellow;
-        }
-      }
-    }
-    &:hover {
-      .meta {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        cursor: pointer;
-        animation-name: darky;
-        animation-duration: 200ms;
-        background-color: #000000b0;
-      }
-    }
   }
 }
 
@@ -85,31 +18,5 @@
 
   .movieList {
     flex-wrap: nowrap !important;
-    
-    // .movie img {
-    //   width: unset;
-    // }
-
-    .movie .meta {
-      height: unset;
-      top: unset;
-      left: 0;
-      right: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      h2 {
-        font-size: 1.2rem;
-        margin: 0 0 1rem;
-      }
-
-      .date {
-        margin-bottom: 0.5rem;
-      }
-    }
   }
 }

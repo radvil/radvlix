@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
@@ -21,7 +20,6 @@ export class LoginComponent implements OnInit {
     public faIconLibrary: FaIconLibrary,
     private _authSrv: AuthService,
     private _notification: NotificationService,
-    private _router: Router,
   ) {
     faIconLibrary.addIcons(faGoogle, faFacebook)
   }
@@ -36,16 +34,16 @@ export class LoginComponent implements OnInit {
   public loginWithGoogle(): void {
     this.isSubmitting = true;
 
-    this._authSrv.doGoogleLogin()
-      .then(result => this.doAfterLoggedIn(result))
+    this._authSrv.googleSignIn()
+      .then(_ => this.doAfterLoggedIn())
       .catch(error => this.catchLoginError(error))
   }
 
   public loginWithFacebook(): void {
     this.isSubmitting = true;
 
-    this._authSrv.doFacebookLogin()
-      .then(result => this.doAfterLoggedIn(result))
+    this._authSrv.facebookSignIn()
+      .then(_ => this.doAfterLoggedIn())
       .catch(error => this.catchLoginError(error))
   }
 
@@ -53,19 +51,17 @@ export class LoginComponent implements OnInit {
     this.isSubmitting = true;
 
     if (this.loginForm.valid) {
-      this._authSrv.doLoginByEmail(this.loginForm.value)
-        .then(result => this.doAfterLoggedIn(result))
+      this._authSrv.emailSignIn(this.loginForm.value)
+        .then(_ => this.doAfterLoggedIn())
         .catch(error => this.catchLoginError(error));
     }
   }
 
-  private doAfterLoggedIn(response: any): void {
-    const subject = response.user.displayName || response.user.email;
-    this._notification.success(`You are now logged in as ${subject}`);
+  private doAfterLoggedIn(): void {
+    this._notification.success(`You are now logged in!`);
 
     setTimeout(() => {
       this.isSubmitting = false;
-      this._router.navigate(['/']);
     }, 1000);
   }
 

@@ -15,11 +15,11 @@ import { MoviesService } from 'src/app/services';
   selector: 'rad-search-dialog',
   templateUrl: './search-dialog.component.html',
   styleUrls: ['./search-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchDialogComponent implements OnDestroy {
-  public searchTerm$ = new Subject<string>();
+  
   private _subs = new Subscription();
+  public searchTerm$ = new Subject<string>();
   public isLoading: boolean;
   public searchResults: Array<any>;
   public notFoundTerm: string;

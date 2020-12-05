@@ -1,0 +1,19 @@
+<div class="item-card" (click)="showItem(item.id)">
+  <div class="image">
+    <img
+      [defaultImage]="'assets/thumb_ph.png'"
+      [lazyLoad]="item?.thumbnailPath"
+      [errorImage]="errorImagePath"
+      [alt]="item?.title"
+    />
+  </div>
+  <div class="meta">
+    <div class="title giveMeEllipsis">{{ item?.title }}</div>
+    <div class="date">{{ item?.releaseDate | date }}</div>
+    <div class="rate">
+      <mat-icon>grade</mat-icon>&nbsp; <span>{{ item?.voteAverage }}</span
+      >&nbsp;
+      <span>( {{ item?.voteCount }} )</span>
+    </div>
+  </div>
+</div>

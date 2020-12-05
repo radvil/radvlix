@@ -1,70 +1,77 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { default as firebase } from 'firebase/app';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+
+import { User } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public currentUser: Observable<firebase.User>;
+  public user$: Observable<firebase.User>;
 
-  constructor(private _afAuth: AngularFireAuth) {
-    this.currentUser = this._afAuth.authState;
-  }
-
-  public doFacebookLogin(): Promise<any> {
-    return this.loginBySocialAccount(new firebase.auth.FacebookAuthProvider());
-  }
-
-  public doGoogleLogin(): Promise<any> {
-    return this.loginBySocialAccount(new firebase.auth.GoogleAuthProvider())
-  }
-
-  public loginBySocialAccount(provider: any): Promise<any> {
-    return new Promise<any>((resolve, reject) => this._afAuth
-      .signInWithPopup(provider)
-      .then(result => resolve(result))
-      .catch(error => {
-        console.log(error);
-        reject(error);
-      })
+  constructor(
+    private _afAuth: AngularFireAuth,
+    private _afs: AngularFirestore,
+    private _router: Router
+  ) {
+    this.user$ = this._afAuth.authState.pipe(
+      switchMap(user => user
+        ? this._afs.doc<User>(`users/${user.uid}`).valueChanges()
+        : of(null)
+      )
     )
   }
 
-  public doLoginByEmail({ email, password }): Promise<any> {
-    return new Promise((resolve, reject) => firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(result => resolve(result))
-      .catch(error => {
-        console.log(error);
-        reject(error);
-      })
-    )
+  public async googleSignIn(): Promise<any> {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const credential = await this._afAuth.signInWithPopup(provider);
+
+    this.updateUserData(credential.user);
+    return this._router.navigate(['/']);
   }
 
-  public doRegisterByEmail({ email, password }): Promise<any> {
-    return new Promise((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(result => resolve(result))
-        .catch(error => {
-          console.log(error);
-          reject(error);
-        })
-    })
+  public async facebookSignIn(): Promise<any> {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    const credential = await this._afAuth.signInWithPopup(provider);
+
+    this.updateUserData(credential.user);
+    return this._router.navigate(['/']);
   }
 
-  public logout(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this._afAuth.signOut()
-        .then(result => resolve(result))
-        .catch(error => {
-          console.log(error);
-          reject(error);
-        })
-    })
+  public async emailSignIn({ email, password }): Promise<any> {
+    await firebase.auth().signInWithEmailAndPassword(email, password);
+    return this._router.navigate(['/']);
+  }
+
+  public async emailSignUp({ email, password }): Promise<any> {
+    const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    this.updateUserData(result.user);
+    return this._router.navigate(['/login']);
+  }
+
+  public async signOut(): Promise<any> {
+    await this._afAuth.signOut();
+    return this._router.navigate(['/']);
+  }
+
+  private updateUserData(user: firebase.User): Promise<void> {
+    const userRef: AngularFirestoreDocument<User> = this._afs.doc(`users/${user.uid}`);
+    const data = {
+      uid: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      emailVerified: user.emailVerified,
+      isAnonymous: user.isAnonymous,
+      photoUrl: user.photoURL,
+    }
+    return userRef.set(data, { merge: true });
   }
 
 }

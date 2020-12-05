@@ -9,11 +9,11 @@ ul.ghost-grid {
   flex-wrap: wrap;
 
   li {
-    flex-basis: 45%;
+    flex-basis: 30%;
     height: 100px;
     margin-bottom: 1rem;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
 
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@ ul.ghost-grid {
       align-items: center;
       justify-content: center;
       height: 100%;
-      width: 40%;
+      width: 33%;
       border-radius: 1rem;
       margin-right: 1rem;
       background: linear-gradient(
@@ -38,7 +38,7 @@ ul.ghost-grid {
     }
 
     .meta {
-      width: 50%;
+      width: 66%;
       .title {
         height: 2rem;
         width: 100%;

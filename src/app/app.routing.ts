@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard, NotAuthGuard } from './services';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/login/login.module').then(
         (m) => m.LoginModule
-      )
+      ),
+    canActivate: [NotAuthGuard],
   },
   {
     path: 'movies',
@@ -33,14 +35,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/profile/profile.module').then(
         (m) => m.ProfileModule
-      )
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
     loadChildren: () =>
       import('./pages/register/register.module').then(
         (m) => m.RegisterModule
-      )
+      ),
+    canActivate: [NotAuthGuard],
   },
   {
     path: 'settings',

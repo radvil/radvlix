@@ -1,14 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+import { MatDialog } from '@angular/material/dialog';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+
+import { SearchDialogComponent, FavoritesSheetComponent } from '../../components';
 import { NotificationService } from 'src/app/@shared';
 import { AuthService } from 'src/app/services';
-
 import { selectIsStickyHeader } from '../../@core/settings';
-import { SearchDialogComponent, FavoritesSheetComponent } from '../../components';
 import * as MenuItems from '../menu-items';
 
 
@@ -21,11 +22,11 @@ export class TopbarComponent implements OnInit {
 
   @Output() public onIconClicked = new EventEmitter();
   public isStickyHeader$: Observable<boolean>;
+  public isLoggedIn$: Observable<boolean>;
   public menu = MenuItems;
 
   constructor(
     private _store: Store,
-    private _router: Router,
     private _authSrv: AuthService,
     private _notification: NotificationService,
     public bottomSheet: MatBottomSheet,
@@ -34,6 +35,7 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isStickyHeader$ = this._store.select(selectIsStickyHeader);
+    this.isLoggedIn$ = this._authSrv.user$.pipe(map(user => !!user));
   }
 
   public sendEventToLayout(): void {
@@ -54,11 +56,8 @@ export class TopbarComponent implements OnInit {
   }
 
   public logoutUser(): void {
-    this._authSrv.logout()
-      .then(result => {
-        this._notification.success('You are now logged out');
-        this._router.navigate(['/']);
-      })
-      .catch(error => this._notification.error(`Something went wrong!`));
+    this._authSrv.signOut()
+      .then(_ => this._notification.success('You are now logged out'))
+      .catch(err => this._notification.error(`Something went wrong!\n${err.message}`));
   }
 }

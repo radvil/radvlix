@@ -1,9 +1,9 @@
-<ng-container *ngIf="isLoading">
+<ng-container *ngIf="isLoading; else tvList">
   <rad-ghost-list></rad-ghost-list>
   <rad-ghost-list></rad-ghost-list>
 </ng-container>
 
-<ng-container *ngIf="!isLoading">
+<ng-template #tvList>
   <!-- popular -->
   <rad-movie-list
     [itemsHeadText]="'Popular'"
@@ -24,4 +24,4 @@
     [itemsType]="'TVS'"
     [items]="topRatedTvs"
   ></rad-movie-list>
-</ng-container>
+</ng-template>

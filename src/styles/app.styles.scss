@@ -146,6 +146,14 @@ mat-toolbar {
   }
 }
 
+.giveMeEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .ng-lazyloading {
   filter: blur(4px);
   transition: all 2s ease-in-out;

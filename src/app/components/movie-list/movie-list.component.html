@@ -3,32 +3,9 @@
     <h1>{{ itemsHeadText }}</h1>
   </div>
 
-  <div class="movieList" #scrollableDiv>
-    <div
-      class="movie"
-      *ngFor="let item of items"
-      [title]="setTitle(item)"
-      (click)="showItemDetail(item.id)"
-    >
-      <img
-        [defaultImage]="item?.thumbnailPath"
-        [lazyLoad]="item?.posterSmallPath"
-        [errorImage]="errorImagePath"
-        [scrollTarget]="scrollableDiv"
-        [alt]="setTitle(item)"
-        width="270"
-        height="400"
-      />
-      <div class="meta">
-        <h2 class="title">{{ setTitle(item) }}</h2>
-        <div class="date">
-          <span>{{ setReleaseDate(item) | date }}</span>
-        </div>
-        <div class="rating">
-          <mat-icon>grade</mat-icon>&nbsp;
-          <span>{{ item?.voteAverage }} / 10</span>
-        </div>
-      </div>
-    </div>
+  <div class="movieList">
+    <ng-container *ngFor="let movie of items">
+      <rad-movie-card [movie]="movie" [listType]="itemsType"></rad-movie-card>
+    </ng-container>
   </div>
 </section>

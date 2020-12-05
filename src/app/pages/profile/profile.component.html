@@ -1,3 +1,16 @@
-<p>
-  {{ (currentUser$ | async) | json }}
-</p>
+<div *ngIf="currentUser$ | async as user; else notLoggedIn" class="profile__container">
+  <h1>Welcome back {{ user?.displayName }}</h1>
+  <h3>Here is your account's detail</h3>
+  <pre>
+    {{ user | json }}
+  </pre>
+
+  <button (click)="signOut()" mat-raised-button color="primary">
+    <mat-icon>power_settings_new</mat-icon>&nbsp;Logout&nbsp;
+  </button>
+</div>
+
+<ng-template #notLoggedIn class="notLoggedIn__container">
+  <h1>You're currently not logged in!</h1>
+  <a routerLink="/login">Go to login page</a>
+</ng-template>

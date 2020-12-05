@@ -1,9 +1,9 @@
-<ng-container *ngIf="isLoading">
+<ng-container *ngIf="isLoading; else movieList">
   <rad-ghost-list></rad-ghost-list>
   <rad-ghost-list></rad-ghost-list>
 </ng-container>
 
-<ng-container *ngIf="!isLoading">
+<ng-template #movieList>
   <rad-movie-list
     [itemsHeadText]="'Popular'"
     [itemsType]="'MOVIES'"
@@ -21,4 +21,4 @@
     [itemsType]="'MOVIES'"
     [items]="upcomingMovies"
   ></rad-movie-list>
-</ng-container>
+</ng-template>
