@@ -12,8 +12,6 @@ export class SearchItemComponent {
   @Output() showItemEvent = new EventEmitter<string>();
   public errorImagePath = 'assets/no_image.png';
 
-  constructor() { }
-
   public showItem(itemId: string) {
     this.showItemEvent.emit(itemId);
   }

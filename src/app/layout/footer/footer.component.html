@@ -1,29 +1,9 @@
 <div class="footer">
 	<div class="row">
 		<div class="links">
-			<a href="https://www.github.com/radvil" target="_blank" rel="noreferrer">
-				<fa-icon [icon]="['fab', 'github']"></fa-icon>&nbsp;
-				<span>Github</span>
-			</a>
-			<a href="https://www.facebook.com/radvilardian" target="_blank" rel="noreferrer">
-				<fa-icon [icon]="['fab', 'facebook']"></fa-icon>&nbsp;
-				<span>Facebook</span>
-			</a>
-			<a href="https://www.twitter.com/radvilardian" target="_blank" rel="noreferrer">
-				<fa-icon [icon]="['fab', 'twitter']"></fa-icon>&nbsp;
-				<span>Twitter</span>
-			</a>
-			<a
-				href="https://www.youtube.com/channel/UClENBr5CqVmAi0qVO2Wf12w"
-        target="_blank"
-        rel="noreferrer"
-			>
-				<fa-icon [icon]="['fab', 'youtube']"></fa-icon>&nbsp;
-				<span>Youtube</span>
-			</a>
-			<a href="https://www.instagram.com/radvilardian" target="_blank" rel="noreferrer">
-				<fa-icon [icon]="['fab', 'instagram']"></fa-icon>&nbsp;
-				<span>Instagram</span>
+			<a *ngFor="let link of links" [href]="link.url" target="_blank" rel="noreferrer">
+				<fa-icon [icon]="['fab', link.iconName]"></fa-icon>&nbsp;
+				<span>{{ link.label }}</span>
 			</a>
 		</div>
 	</div>

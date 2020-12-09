@@ -31,6 +31,10 @@ mat-toolbar {
 	position: unset !important;
 }
 
+.mat-drawer-content {
+	overflow-x: hidden !important;
+}
+
 .mat-drawer-inner-container {
 	overflow-x: hidden !important;
 }

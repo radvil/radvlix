@@ -66,6 +66,8 @@ export class SearchDialogComponent implements OnDestroy {
   }
 
   public showMovie(itemId: string): void {
+    console.log('Showing movie test..', itemId);
+    
     if (!itemId) return;
     else {
       this._router.navigateByUrl(`/movie-detail/${itemId}`);

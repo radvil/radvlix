@@ -1,0 +1,40 @@
+{
+  "emulators": {
+    "auth": {
+      "port": 9001
+    },
+    "functions": {
+      "port": 9002
+    },
+    "firestore": {
+      "port": 9003
+    },
+    "database": {
+      "port": 9004
+    },
+    "hosting": {
+      "port": 9000
+    },
+    "pubsub": {
+      "port": 9005
+    },
+    "ui": {
+      "enabled": true,
+      "port": 9999
+    }
+  },
+  "hosting": {
+    "public": "dist/radvlix/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

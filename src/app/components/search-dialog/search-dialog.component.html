@@ -13,13 +13,13 @@
   </mat-form-field>
 
   <mat-dialog-content>
-    <ng-container>
+    <ng-container *ngIf="!searchResults && isLoading">
       <rad-search-ghost></rad-search-ghost>
     </ng-container>
 
     <div *ngIf="searchResults && !isLoading" class="search-results">
       <ng-container *ngFor="let item of searchResults">
-        <rad-search-item (showItemEvent)="showMovie(event$)" [item]="item"></rad-search-item>
+        <rad-search-item (showItemEvent)="showMovie($event)" [item]="item"></rad-search-item>
       </ng-container>
     </div>
 
